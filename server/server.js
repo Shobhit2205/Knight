@@ -8,23 +8,24 @@ import messageRoutes from "./routes/messageRoutes.js";
 import cors from 'cors';
 import {Server} from "socket.io";
 import path from "path";
-import helmet from "helmet";
+// import helmet from "helmet";
 
 dotenv.config();
 connectDB();
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.use(helmet());
-app.use(
-  helmet.contentSecurityPolicy({
-    useDefaults: true,
-    directives: {
-      "script-src": ["'self'", "'unsafe-inline'", "example.com"],
-      "img-src": ["'self'", "https: data:"]
-    }
-  })
-)
+
+// app.use(helmet());
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     useDefaults: true,
+//     directives: {
+//       "script-src": ["'self'", "'unsafe-inline'", "example.com"],
+//       "img-src": ["'self'", "https: data:"]
+//     }
+//   })
+// )
 
 app.use("/api/v1/auth", authRoutes);
 
